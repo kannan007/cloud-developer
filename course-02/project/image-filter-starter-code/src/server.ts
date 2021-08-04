@@ -43,7 +43,7 @@ const isImageUrl = require('is-image-url');
 
     if(!image_url || !isImageUrl(image_url)) return res.status(417).send('Malformed URL!..Try again with a proper image URL') 
 
-    const filteredpath = await filterImageFromURL(image_url)
+    const filteredpath: string = await filterImageFromURL(image_url)
     res.status(200).sendFile(filteredpath,()=> {
       deleteLocalFiles([filteredpath])
     })
